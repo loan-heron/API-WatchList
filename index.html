@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Watchlist</title>
+    <link rel="stylesheet" href="./asset/css/style.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Watchlist</h1>
+      <button type="button" id="open-add" class="btn btn-primary">+ Ajouter un film</button>
+    </header>
+
+    <section id="stats"></section>
+
+    <p id="message" role="status"></p>
+
+    <section id="controls">
+      <input type="search" id="search" placeholder="Rechercher un titre..." />
+
+      <select id="filter-genre">
+        <option value="">Tous les genres</option>
+        <option value="SF">SF</option>
+        <option value="Drame">Drame</option>
+        <option value="Comédie">Comédie</option>
+        <option value="Thriller">Thriller</option>
+        <option value="Animation">Animation</option>
+      </select>
+
+      <select id="filter-status">
+        <option value="">Tous les statuts</option>
+        <option value="aVoir">À voir</option>
+        <option value="vu">Vu</option>
+      </select>
+
+      <select id="sort">
+        <option value="">Trier par...</option>
+        <option value="title">Titre</option>
+        <option value="year">Année</option>
+        <option value="rating">Note</option>
+      </select>
+    </section>
+
+    <dialog id="add-dialog" aria-labelledby="add-title">
+      <form id="film-form" class="modal">
+        <div class="modal-header">
+          <h2 id="add-title">Ajouter un film</h2>
+          <button type="button" id="close-add" class="modal-close" aria-label="Fermer">+</button>
+        </div>
+
+        <label class="field">
+          <span>Titre</span>
+          <input type="text" id="new-title" placeholder="Ex : Inception" required />
+        </label>
+
+        <div class="field-row">
+          <label class="field">
+            <span>Genre</span>
+            <select id="new-genre" required>
+              <option value="SF">SF</option>
+              <option value="Drame">Drame</option>
+              <option value="Comédie">Comédie</option>
+              <option value="Thriller">Thriller</option>
+              <option value="Animation">Animation</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Année</span>
+            <input type="number" id="new-year" placeholder="2010" min="1888" max="2100" required />
+          </label>
+        </div>
+
+        <label class="field" id="image-field">
+          <span>Affiche (optionnel)</span>
+          <input type="file" id="new-image" accept="image/jpeg,image/png,image/webp,image/gif" />
+        </label>
+
+        <p id="form-error" class="form-error" role="alert"></p>
+
+        <div class="modal-actions">
+          <button type="button" id="cancel-add" class="btn btn-ghost">Annuler</button>
+          <button type="submit" id="submit-film" class="btn btn-primary">Ajouter</button>
+        </div>
+      </form>
+    </dialog>
+
+    <section id="film-list"></section>
+
+    <script src="asset/js/api.js"></script>
+    <script src="asset/js/card.js"></script>
+    <script src="asset/js/list.js"></script>
+    <script src="asset/js/app.js"></script>
+  </body>
+</html>
